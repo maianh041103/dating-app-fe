@@ -5,11 +5,12 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { User } from './_model/user';
 import { AccountService } from './_services/account.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root', //Hiển thị ra UI là cái thẻ nào
   standalone: true, //Không có file ng module
-  imports: [CommonModule, NavComponent, HomeComponent], //Nhúng các component tạo ra
+  imports: [CommonModule, NavComponent, HomeComponent, RouterModule], //Nhúng các component tạo ra
   templateUrl: './app.component.html', //File template(giao diện) là file nào
   styleUrl: './app.component.css' //File css
 })

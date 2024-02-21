@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AccountService {
   baseUrl = "https://localhost:5001/api/";
 
-  private currentUserSource = new BehaviorSubject<User | null>(null); //Lưu 1 người dùng hiện tại
+  private currentUserSource = new BehaviorSubject<any>(1); //Lưu 1 người dùng hiện tại
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient) { }
