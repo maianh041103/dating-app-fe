@@ -1,25 +1,20 @@
-import { Injectable, Injector, inject } from '@angular/core';
-import { CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn } from '@angular/router';
+import { AccountService } from '../_services/account.service';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs';
 
-// @Injectable()
-// class PermissionsService {
-//   constructor(public toastr: ToastrService) { }
-// }
+export const authGuard: CanActivateFn = (route, state) => {
+  const accountService = inject(AccountService);
+  const toastr = inject(ToastrService);
 
-export const authGuard: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot,
-) => {
-  // const injector = Injector.create({ providers: [{ provide: PermissionsService, deps: [] }] });
-  // const permissionsService: PermissionsService = injector.get(PermissionsService);
-
-  const user = localStorage.getItem("user");
-  if (user) {
-    return true;
-  }
-  else {
-    alert("Không có quyền truy cập");
-    return false;
-  }
+  return accountService.currentUser$.pipe(
+    map(user => {
+      if (user) return true;
+      else {
+        toastr.error('you shall not pass!');
+        return false;
+      }
+    })
+  )
 };
