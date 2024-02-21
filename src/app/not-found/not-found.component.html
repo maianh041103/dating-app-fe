@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>NOT FOUND</h1>
+  <button class="btn btn-info btn-lg" routerLink="/"
+    *ngIf="!(accountSevrice.currentUser$ | async)">Return to home
+    page</button>
+  <button class="btn btn-info btn-lg" routerLink="/members"
+    *ngIf="accountSevrice.currentUser$ | async">Return to members
+    page</button>
+</div>
