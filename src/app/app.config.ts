@@ -8,6 +8,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { jwtInterceptor } from './_interceptors/jwt.interceptor';
+import { GALLERY_CONFIG, GalleryConfig } from 'ng-gallery';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,6 +19,13 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(), // required animations providers
     provideToastr(), // Toastr providers
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: jwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: jwtInterceptor, multi: true },
+    {
+      provide: GALLERY_CONFIG,
+      useValue: {
+        autoHeight: true,
+        imageSize: 'cover'
+      } as GalleryConfig
+    }
   ]
 };
