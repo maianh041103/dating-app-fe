@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { User } from '../_model/user';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = "https://localhost:5001/api/";
+
+  baseUrl = environment.apiUrl;
 
   private currentUserSource = new BehaviorSubject<any>(1); //Lưu 1 người dùng hiện tại
   currentUser$ = this.currentUserSource.asObservable();
@@ -16,6 +18,7 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   login(model: any) {
+    console.log(environment.apiUrl);
     return this.http.post<User>(this.baseUrl + "accounts/login", model).pipe(
       map((response: User) => {
         const user = response;
