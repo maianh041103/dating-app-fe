@@ -29,7 +29,7 @@ export class MemberDetailComponent implements OnInit {
     if (!username) return;
     this.memberService.getMember(username).subscribe(member => {
       this.member = member;
-      this.getImages()
+      this.getImages();
     })
   }
 

@@ -20,41 +20,41 @@ export class TestErrorsComponent {
 
   get404Error() {
     this.http.get(this.baseUrl + "buggy/not-found").subscribe(response => {
-      console.log(response);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.get ~ response:", response)
     }, error => {
-      console.log(error);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.get ~ error:", error)
     });
   }
 
   get400Error() {
     this.http.get(this.baseUrl + "buggy/bad-request").subscribe(response => {
-      console.log(response);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.get ~ response:", response)
     }, error => {
-      console.log(error);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.get ~ error:", error)
     });
   }
 
   get500Error() {
     this.http.get(this.baseUrl + "buggy/server-error").subscribe(response => {
-      console.log(response);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.get ~ response:", response)
     }, error => {
-      console.log(error);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.get ~ error:", error)
     });
   }
 
   get401Error() {
     this.http.get(this.baseUrl + "buggy/auth").subscribe(response => {
-      console.log(response);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.get ~ response:", response)
     }, error => {
-      console.log(error);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.get ~ error:", error)
     });
   }
 
   get400ValidationError() {
     this.http.post(this.baseUrl + "accounts/register", {}).subscribe(response => {
-      console.log(response);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.post ~ response:", response)
     }, error => {
-      console.log(error);
+      console.log("🚀 ~ TestErrorsComponent ~ this.http.post ~ error:", error)
       this.validationErrors = error;
     });
   }
